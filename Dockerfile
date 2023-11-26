@@ -6,8 +6,8 @@ RUN apt-get update && apt-get -y upgrade \
 WORKDIR /srv
 COPY . /srv
 
-RUN echo "shared_preload_libraries = 'pg_cron'" >> /var/lib/postgresql/data/postgresql.conf
-RUN echo "cron.database_name = 'postgres'" >> /var/lib/postgresql/data/postgresql.conf
+RUN echo "shared_preload_libraries = 'pg_cron'" >> /usr/share/postgresql/postgresql.conf.sample
+RUN echo "cron.database_name = 'postgres'" >> /usr/share/postgresql/postgresql.conf.sample
 
 RUN for v in `seq 13 16`; do pg_buildext build-$v $v; done
 
