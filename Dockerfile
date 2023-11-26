@@ -6,7 +6,8 @@ RUN apt-get update && apt-get -y upgrade \
 WORKDIR /srv
 COPY . /srv
 
-RUN for v in `seq 13 16`; do pg_buildext build-$v $v; done
+RUN for v in `seq 13 16`; do pg_buildext build-$v $v; done \
+  && for v in `seq 13 16`; do pgxn install -d /usr/share/postgresql/$v/extension pg_uuidv7;
 
 RUN TARGETS=$(find * -name pg_uuidv7.so) \
   && tar -czvf pg_uuidv7.tar.gz $TARGETS sql/pg_uuidv7--1.3.sql pg_uuidv7.control \
