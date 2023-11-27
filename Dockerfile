@@ -17,4 +17,4 @@ RUN TARGETS=$(find * -name pg_uuidv7.so) \
 
 RUN cp ${PG_MAJOR}/pg_uuidv7.so /usr/lib/postgresql/${PG_MAJOR}/lib \
   && cp pg_uuidv7.control /usr/share/postgresql/${PG_MAJOR}/extension \
-  && cp pg_uuidv7--1.3.sql /usr/share/postgresql/${PG_MAJOR}/extension
+  && cp sql/pg_uuidv7--1.3.sql /usr/share/postgresql/${PG_MAJOR}/extension
